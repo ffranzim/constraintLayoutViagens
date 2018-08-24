@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:text="R$ 243,99"
         android:textColor="@android:color/holo_green_dark"
-        
+
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/item_pacote_tv_dias"
         app:layout_constraintTop_toBottomOf="@id/item_pacote_tv_dias" />
