@@ -10,13 +10,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 
 import br.com.franzim.constraintlayout.viagens.R;
 import br.com.franzim.constraintlayout.viagens.model.Pacote;
+import br.com.franzim.constraintlayout.viagens.util.DiasUtil;
+import br.com.franzim.constraintlayout.viagens.util.MoedaUtil;
+import br.com.franzim.constraintlayout.viagens.util.ResourcesUtil;
 
 public class ListaPacotesAdapter extends BaseAdapter {
 
@@ -60,18 +60,14 @@ public class ListaPacotesAdapter extends BaseAdapter {
 
     private void setPreco(View viewCriada, Pacote pacote) {
         TextView tvPreco = viewCriada.findViewById(R.id.item_pacote_tv_preco);
-        NumberFormat formatoBR = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
-        tvPreco.setText(formatoBR.format(pacote.getPreco()).replace("R$", "R$ "));
+        tvPreco.setText(MoedaUtil.formataMoedaBR(pacote.getPreco()));
     }
 
     private void setDias(View viewCriada, Pacote pacote) {
+
         TextView tvDias = viewCriada.findViewById(R.id.item_pacote_tv_dias);
-        int dias = pacote.getDias();
-        if (dias > 1) {
-            tvDias.setText(dias + " dias");
-        } else {
-            tvDias.setText(dias + " dia");
-        }
+        String diasEmTexto = DiasUtil.formataDiasEmTexto(pacote.getDias());
+        tvDias.setText(diasEmTexto);
     }
 
     private void setLocal(View viewCriada, Pacote pacote) {
@@ -80,11 +76,10 @@ public class ListaPacotesAdapter extends BaseAdapter {
     }
 
     private void setImageView(View viewCriada, Pacote pacote) {
-        Resources resources = context.getResources();
-        int idDrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
-        Drawable drawable = resources.getDrawable(idDrawable);
-
+        Drawable drawable = ResourcesUtil.getDrawable(context, pacote.getImagem());
         ImageView iv = viewCriada.findViewById(R.id.item_pacote_iv);
         iv.setImageDrawable(drawable);
     }
+
+
 }

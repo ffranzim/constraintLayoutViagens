@@ -18,7 +18,7 @@ public class ListaPacotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pacotes);
 
-        setTitle(R.string.title_packages);
+        setTitle(R.string.activity_title_packages);
         confListaPacotes();
     }
 

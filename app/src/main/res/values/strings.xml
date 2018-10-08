@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">constraintLayoutViagens</string>
-    <string name="title_packages">Pacotes</string>
+    <string name="activity_title_packages">Pacotes</string>
 </resources>
