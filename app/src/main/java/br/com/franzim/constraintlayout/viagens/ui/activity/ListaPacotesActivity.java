@@ -1,5 +1,6 @@
 package br.com.franzim.constraintlayout.viagens.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -20,6 +21,9 @@ public class ListaPacotesActivity extends AppCompatActivity {
 
         setTitle(R.string.activity_title_packages);
         confListaPacotes();
+
+        Intent intent = new Intent(this, ResumoPacoteActivity.class);
+        startActivity(intent);
     }
 
     private void confListaPacotes() {
