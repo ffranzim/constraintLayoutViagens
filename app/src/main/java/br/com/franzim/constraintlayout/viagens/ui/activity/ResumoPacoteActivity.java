@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import br.com.franzim.constraintlayout.viagens.R;
 import br.com.franzim.constraintlayout.viagens.model.Pacote;
@@ -21,6 +23,7 @@ public class ResumoPacoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo_pacote);
+        setTitle(R.string.activity_resumo_pacote_title);
 
         Pacote pacote = new Pacote("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
 
@@ -35,8 +38,15 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         imagemPacote.setImageDrawable(ResourcesUtil.getDrawable(this, pacote.getImagem()));
         labelLocal.setText(pacote.getLocal());
         labelDias.setText(DiasUtil.formataDiasEmTexto(pacote.getDias()));
-//        labelData.setText();
         labelValor.setText(MoedaUtil.formataMoedaBR(pacote.getPreco()));
+
+        Calendar dataIda = Calendar.getInstance();
+        Calendar dataVolta = Calendar.getInstance();
+        dataVolta.add(Calendar.DATE, pacote.getDias());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+        String data = sdf.format(dataIda.getTime()) + " - " + sdf.format(dataVolta.getTime()) + " de " + dataVolta.get(Calendar.YEAR);
+        labelData.setText(data);
 
 
     }
