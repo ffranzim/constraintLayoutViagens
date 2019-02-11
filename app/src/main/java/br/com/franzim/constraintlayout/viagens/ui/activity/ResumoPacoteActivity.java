@@ -1,5 +1,6 @@
 package br.com.franzim.constraintlayout.viagens.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -24,12 +25,12 @@ public class ResumoPacoteActivity extends AppCompatActivity {
     public static final int DIAS_PACOTE = 2;
     public static final String VALOR_PACOTE = "243.99";
 
-    ImageView imagemPacote;
-    TextView labelLocal;
-    TextView labelDias;
-    TextView labelData;
-    TextView labelValor;
-    Button btnPagar;
+    private ImageView imagemPacote;
+    private TextView labelLocal;
+    private TextView labelDias;
+    private TextView labelData;
+    private TextView labelValor;
+    private Button btnPagar;
 
 
     @Override
@@ -44,6 +45,8 @@ public class ResumoPacoteActivity extends AppCompatActivity {
 
         setLayout(pacote);
 
+        Intent intent = new Intent(this, PagamentoActivity.class);
+        startActivity(intent);
 
     }
 

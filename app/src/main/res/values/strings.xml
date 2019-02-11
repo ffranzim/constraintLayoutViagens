@@ -2,6 +2,7 @@
     <string name="app_name">constraintLayoutViagens</string>
     <string name="activity_title_packages">Pacotes</string>
     <string name="activity_resumo_pacote_title">Resumo do Pacote</string>
+    <string name="activity_pagamento_title">Pagamento</string>
 
     <string name="lista_pacotes_content_description_banner">Banner da tela de pacotes</string>
     <string name="lista_pacotes_tv_title_packages">Especiais</string>
@@ -10,4 +11,19 @@
     <string name="layout_resumo_pacote_preco_final">Preço final:</string>
     <string name="layout_resumo_pacote_imagem_do_pacote">Imagem do pacote</string>
     <string name="layout_resumo_pacote_realizar_pagamento">Realizar Pagamento</string>
+
+
+
+    <string name="pagamento_orientacao_pagamento">Digite as informações do cartão de crédito que você deseja utilizar para o pagamento</string>
+    <string name="pagamento_valor_da_compra">Valor da compra:</string>
+    <string name="pagamento_hint_ano_cartao">AA</string>
+    <string name="pagamento_hintcvc_cartao">CVC</string>
+    <string name="pagamento_numero_cartao">Número do cartão</string>
+    <string name="pagamento_mes_cartao">MM</string>
+    <string name="pagamento_nome_escrito_cartao">Nome no cartão</string>
+    <string name="pagamento_finalizar_compra">Finalizar compra</string>
+
+
+    <string name="mascaraTextoSemNumeros">çÇABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\u0020</string>
+
 </resources>
