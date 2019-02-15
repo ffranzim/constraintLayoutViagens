@@ -3,6 +3,7 @@
     <string name="activity_title_packages">Pacotes</string>
     <string name="activity_resumo_pacote_title">Resumo do Pacote</string>
     <string name="activity_pagamento_title">Pagamento</string>
+    <string name="activity_resumo_da_compra_title">Resumo da compra</string>
 
     <string name="lista_pacotes_content_description_banner">Banner da tela de pacotes</string>
     <string name="lista_pacotes_tv_title_packages">Especiais</string>
@@ -11,7 +12,6 @@
     <string name="layout_resumo_pacote_preco_final">Preço final:</string>
     <string name="layout_resumo_pacote_imagem_do_pacote">Imagem do pacote</string>
     <string name="layout_resumo_pacote_realizar_pagamento">Realizar Pagamento</string>
-
 
 
     <string name="pagamento_orientacao_pagamento">Digite as informações do cartão de crédito que você deseja utilizar para o pagamento</string>
@@ -25,5 +25,10 @@
 
 
     <string name="mascaraTextoSemNumeros">çÇABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\u0020</string>
+    <string name="resumo_compra_tv_confira_resumo">Confira o resumo da compra:</string>
+    <string name="resumo_compra_tv_parabens">Parabéns!</string>
+    <string name="resumo_compra_tv_compra_realizada_sucesso">Compra realizada com sucesso :)</string>
+    <string name="resumo_compra_iv_header">banner de informações da da tela de resumo de compras</string>
+    <string name="resumo_compra_iv_pacote">imegem do local do @string/activity_resumo_pacote_title</string>
 
 </resources>
