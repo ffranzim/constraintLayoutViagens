@@ -1,12 +1,11 @@
 package br.com.franzim.constraintlayout.viagens.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
 
 import br.com.franzim.constraintlayout.viagens.R;
@@ -15,13 +14,10 @@ import br.com.franzim.constraintlayout.viagens.util.DataUtil;
 import br.com.franzim.constraintlayout.viagens.util.MoedaUtil;
 import br.com.franzim.constraintlayout.viagens.util.ResourcesUtil;
 
+import static br.com.franzim.constraintlayout.viagens.util.Constantes.NAME_PUT_EXTRA_PACOTE;
+
 public class ResumoCompraActivity extends AppCompatActivity {
 
-
-    public static final String LOCAL_PACOTE = "São Paulo";
-    public static final String IMAGEM_DRAWABLE = "sao_paulo_sp";
-    public static final int DIAS_PACOTE = 2;
-    public static final String VALOR_PACOTE = "243.99";
 
     private ImageView ivPacote;
     private TextView labelDestinoPacote;
@@ -32,14 +28,18 @@ public class ResumoCompraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo_compra);
-
         setTitle(R.string.activity_resumo_da_compra_title);
+
         bindAtributosTela();
+        carregaPacoteRecebido();
+    }
 
-        Pacote pacote = new Pacote(LOCAL_PACOTE, IMAGEM_DRAWABLE, DIAS_PACOTE, new BigDecimal(VALOR_PACOTE));
-        setLayout(pacote);
-
-        
+    private void carregaPacoteRecebido() {
+        Intent intent = getIntent();
+        if (intent.hasExtra(NAME_PUT_EXTRA_PACOTE)) {
+            Pacote pacote = (Pacote) intent.getSerializableExtra(NAME_PUT_EXTRA_PACOTE);
+            setLayout(pacote);
+        }
     }
 
     private void setLayout(Pacote pacote) {

@@ -26,7 +26,6 @@ public class ListaPacotesAdapter extends BaseAdapter {
     public ListaPacotesAdapter(Context context, List<Pacote> pacotes) {
         this.context = context;
         this.pacotes = pacotes;
-
     }
 
     @Override
@@ -64,7 +63,6 @@ public class ListaPacotesAdapter extends BaseAdapter {
     }
 
     private void setDias(View viewCriada, Pacote pacote) {
-
         TextView tvDias = viewCriada.findViewById(R.id.item_pacote_tv_dias);
         String diasEmTexto = DiasUtil.formataDiasEmTexto(pacote.getDias());
         tvDias.setText(diasEmTexto);
@@ -80,6 +78,5 @@ public class ListaPacotesAdapter extends BaseAdapter {
         ImageView iv = viewCriada.findViewById(R.id.item_pacote_iv);
         iv.setImageDrawable(drawable);
     }
-
 
 }

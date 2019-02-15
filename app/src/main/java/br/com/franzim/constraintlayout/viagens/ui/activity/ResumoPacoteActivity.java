@@ -1,29 +1,27 @@
 package br.com.franzim.constraintlayout.viagens.ui.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import br.com.franzim.constraintlayout.viagens.R;
 import br.com.franzim.constraintlayout.viagens.model.Pacote;
+import br.com.franzim.constraintlayout.viagens.util.Constantes;
 import br.com.franzim.constraintlayout.viagens.util.DataUtil;
 import br.com.franzim.constraintlayout.viagens.util.DiasUtil;
 import br.com.franzim.constraintlayout.viagens.util.MoedaUtil;
 import br.com.franzim.constraintlayout.viagens.util.ResourcesUtil;
 
+import static br.com.franzim.constraintlayout.viagens.util.Constantes.NAME_PUT_EXTRA_PACOTE;
+
 public class ResumoPacoteActivity extends AppCompatActivity {
 
-    public static final String LOCAL_PACOTE = "São Paulo";
-    public static final String IMAGEM_DRAWABLE = "sao_paulo_sp";
-    public static final int DIAS_PACOTE = 2;
-    public static final String VALOR_PACOTE = "243.99";
 
     private ImageView imagemPacote;
     private TextView labelLocal;
@@ -40,14 +38,15 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         setTitle(R.string.activity_resumo_pacote_title);
 
         bindAtibutosTela();
+        carregaPacoteRecebido();
+    }
 
-        Pacote pacote = new Pacote(LOCAL_PACOTE, IMAGEM_DRAWABLE, DIAS_PACOTE, new BigDecimal(VALOR_PACOTE));
-
-        setLayout(pacote);
-
-        Intent intent = new Intent(this, PagamentoActivity.class);
-        startActivity(intent);
-
+    private void carregaPacoteRecebido() {
+        Intent intent = getIntent();
+        if (intent.hasExtra(NAME_PUT_EXTRA_PACOTE)) {
+            Pacote pacote = (Pacote) intent.getSerializableExtra(NAME_PUT_EXTRA_PACOTE);
+            setLayout(pacote);
+        }
     }
 
     private void bindAtibutosTela() {
@@ -59,7 +58,7 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         btnPagar = findViewById(R.id.resumo_pacote_btn_pagar);
     }
 
-    private void setLayout(Pacote pacote) {
+    private void setLayout(final Pacote pacote) {
         imagemPacote.setImageDrawable(ResourcesUtil.getDrawable(this, pacote.getImagem()));
         labelLocal.setText(pacote.getLocal());
         labelDias.setText(DiasUtil.formataDiasEmTexto(pacote.getDias()));
@@ -67,6 +66,15 @@ public class ResumoPacoteActivity extends AppCompatActivity {
 
         String data = DataUtil.getPeriodoEmTexto(Calendar.getInstance(), pacote.getDias());
         labelData.setText(data);
+
+        btnPagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResumoPacoteActivity.this, PagamentoActivity.class);
+                intent.putExtra(NAME_PUT_EXTRA_PACOTE, pacote);
+                startActivity(intent);
+            }
+        });
     }
 
 
